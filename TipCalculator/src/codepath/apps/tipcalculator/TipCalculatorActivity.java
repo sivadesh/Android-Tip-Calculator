@@ -25,18 +25,22 @@ public class TipCalculatorActivity extends Activity {
 	}
 	
 	public void calcTip(View view)	{
-		double billValue = Double.valueOf(((EditText)findViewById(R.id.billAmount)).getText().toString());
-		switch(view.getId()) {
-		case R.id.ten:
-			tipValue = 0.1 * billValue;
-			break;
-		case R.id.fifteen:
-			tipValue = 0.15 * billValue;
-			break;
-		case R.id.twenty:
-			tipValue = 0.2 * billValue;
-			break;
-		}
+		if(((EditText)findViewById(R.id.billAmount)).getText().toString().trim().length() > 0)
+		{		
+			double billValue = Double.valueOf(((EditText)findViewById(R.id.billAmount)).getText().toString());
+			switch(view.getId()) {
+			case R.id.ten:
+				tipValue = 0.1 * billValue;
+				break;
+			case R.id.fifteen:
+				tipValue = 0.15 * billValue;
+				break;
+			case R.id.twenty:
+				tipValue = 0.2 * billValue;
+				break;
+			}
+		} else
+			tipValue = 0;
 		setText(tipValue);
 	}
 	
